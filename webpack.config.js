@@ -28,14 +28,14 @@ module.exports = env => ({
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ // Optimize Html data in better way to serve it 
       inject: false,
       template: "src/index.ejs",
       templateParameters: {
         isLocal: env && env.isLocal === "true"
       }
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin() // clean before every new build
   ],
-  externals: ["single-spa", /^@mf-demo\/.+$/]
+  externals: ["single-spa", /^@mf-demo\/.+$/] // Dont build and bundle on webpack take from external 
 });
