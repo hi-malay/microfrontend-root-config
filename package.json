@@ -1,10 +1,12 @@
 {
+  "homepage": "https://hi-malay.github.io/mf-root-config",
   "scripts": {
     "start": "webpack-dev-server --mode=development --port 9000 --env.isLocal=true",
     "lint": "eslint src",
     "test": "jest",
     "format": "prettier --write './**'",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -28,6 +30,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "gh-pages": "^6.2.0",
     "single-spa": "^5.3.0"
   }
 }
