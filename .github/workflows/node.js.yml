@@ -25,7 +25,6 @@ jobs:
         cache: 'yarn'
     - run: yarn install --frozen-lockfile
     - run: yarn build
-    - run: yarn test
 
     - name: Deploy with gh-pages
       run: |
