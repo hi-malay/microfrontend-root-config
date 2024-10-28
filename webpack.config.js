@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = env => ({
   entry: path.resolve(__dirname, "src/root-config"),
   output: {
+    publicPath: "/mf-root-config/",
     filename: "mf-demo-root-config.js",
     libraryTarget: "system",
     path: path.resolve(__dirname, "dist")
