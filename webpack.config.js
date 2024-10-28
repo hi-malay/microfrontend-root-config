@@ -29,14 +29,23 @@ module.exports = env => ({
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({ // Optimize Html data in better way to serve it 
+    new HtmlWebpackPlugin({
       inject: false,
       template: "src/index.ejs",
+      filename: "index.html", // main entry point
       templateParameters: {
         isLocal: env && env.isLocal === "true"
       }
     }),
-    new CleanWebpackPlugin() // clean before every new build
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: "src/index.ejs",
+      filename: "404.html", // fallback for GitHub Pages routing
+      templateParameters: {
+        isLocal: env && env.isLocal === "true"
+      }
+    }),
+    new CleanWebpackPlugin() // Clean before every new build
   ],
-  externals: ["single-spa", /^@mf-demo\/.+$/] // Dont build and bundle on webpack take from external 
+  externals: ["single-spa", /^@mf-demo\/.+$/] // Don’t build and bundle these; load externally
 });
