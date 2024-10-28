@@ -7,6 +7,7 @@ export function navbar(location) {
 }
 
 export function employees(location) {
+  console.log('location.pathname :>> ', location.pathname, `${basePath}/employees`);
   return location.pathname === `${basePath}/employees`;
 }
 
