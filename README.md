@@ -16,7 +16,7 @@ If you're dying to see this in action, here you go:\
 Click "employees" on this bad boy and *poof*, you'll load a new microfrontend:\
 **[Employees MF](https://hi-malay.github.io/mf-root-config/employees)** 🎉
 
-Pretty magical, huh? ✨
+
 
 Installation
 ------------
@@ -46,8 +46,8 @@ Related Repos
 Oh, but there's more! Like an entire universe of related repos, and I'm sure you're *thrilled* to check them out one by one:
 
 -   **[mf-employees](https://github.com/hi-malay/mf-employees)**: A React app, because obviously, why wouldn't we use React? ⚛️
--   **[mf-navbar](https://github.com/hi-malay/mf-navbar)**: Another React app. What can I say? We love that JSX. 📐
--   **[mf-employee-details](https://github.com/hi-malay/mf-employee-details)**: And here's a twist---this one's Angular. (Because who doesn't love mixing frameworks?) 🅰️
+-   **[mf-navbar](https://github.com/hi-malay/mf-navbar)**: Another React app. 📐
+-   **[mf-employee-details](https://github.com/hi-malay/mf-employee-details)**: And here's a twist---this one's Angular. 🅰️
 
 Contributions
 -------------
