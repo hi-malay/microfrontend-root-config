@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Microfrontend Demo</title>
+  <title>Everything mf</title>
   <meta name="importmap-type" content="systemjs-importmap" />
+  <link rel="icon" href="../asset/imageSvg.png" >
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
   <% if (isLocal) { %>
@@ -52,6 +53,7 @@
 </head>
 <body>
   <nav id="mf-navbar"></nav> 
+  <button id="mf-employees-login" class="login-button">Login</button>
   <div class="container-fluid mt-3">
     <div class="row">
       <div class="col-sm-12">
@@ -64,4 +66,14 @@
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>
+<style>
+.login-button {
+width: 180px;
+background-color: rgb(181, 185, 199);
+border: none;
+}
+.login-button:hover {
+box-shadow: 1px 1px 1px 1px #888888;
+}
+</style>
 </html>

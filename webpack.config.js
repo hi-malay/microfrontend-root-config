@@ -1,14 +1,15 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-module.exports = env => ({
+const isProd = process.env.NODE_ENV === "production";
+console.log("isProd in webpack:>> ", isProd);
+module.exports = (env) => ({
   entry: path.resolve(__dirname, "src/root-config"),
   output: {
-    publicPath: "/mf-root-config/",
+    publicPath: isProd ? "/mf-root-config/" : "",
     filename: "mf-demo-root-config.js",
     libraryTarget: "system",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
   },
   devtool: "sourcemap",
   module: {
@@ -17,16 +18,16 @@ module.exports = env => ({
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [{ loader: "babel-loader" }]
-      }
-    ]
+        use: [{ loader: "babel-loader" }],
+      },
+    ],
   },
   devServer: {
     historyApiFallback: true,
     disableHostCheck: true,
     headers: {
-      "Access-Control-Allow-Origin": "*"
-    }
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -34,18 +35,18 @@ module.exports = env => ({
       template: "src/index.ejs",
       filename: "index.html", // main entry point
       templateParameters: {
-        isLocal: env && env.isLocal === "true"
-      }
+        isLocal: env && env.isLocal === "true",
+      },
     }),
     new HtmlWebpackPlugin({
       inject: false,
       template: "src/index.ejs",
       filename: "404.html", // fallback for GitHub Pages routing
       templateParameters: {
-        isLocal: env && env.isLocal === "true"
-      }
+        isLocal: env && env.isLocal === "true",
+      },
     }),
-    new CleanWebpackPlugin() // Clean before every new build
+    new CleanWebpackPlugin(), // Clean before every new build
   ],
-  externals: ["single-spa", /^@mf-demo\/.+$/] // Don’t build and bundle these; load externally
+  externals: ["single-spa", /^@mf-demo\/.+$/], // Don’t build and bundle these; load externally
 });
