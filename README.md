@@ -33,8 +33,8 @@ Follow these incredibly complicated steps to get it running locally (if you dare
 
     Copy code
 
-    `npm install
-    npm run start`
+    `yarn install
+    yarn run start`
 
 See? Easy-peasy... even if it's just a "root config." 😌
 
