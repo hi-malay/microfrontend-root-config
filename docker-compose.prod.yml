@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  mf-root-config:
+    environment:
+      - NODE_ENV=production
+    command: yarn build
+
+  mf-navbar:
+    environment:
+      - NODE_ENV=production
+    command: yarn build
+
+  mf-employees:
+    environment:
+      - NODE_ENV=production
+    command: yarn build
+
+  mf-employee-details:
+    environment:
+      - NODE_ENV=production
+    command: yarn build

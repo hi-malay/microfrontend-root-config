@@ -2,7 +2,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const isProd = process.env.NODE_ENV === "production";
-console.log("isProd in webpack:>> ", isProd);
+
 module.exports = (env) => ({
   entry: path.resolve(__dirname, "src/root-config"),
   output: {
@@ -28,6 +28,8 @@ module.exports = (env) => ({
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    host: "0.0.0.0",
+    port: 9000,
   },
   plugins: [
     new HtmlWebpackPlugin({
