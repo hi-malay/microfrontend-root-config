@@ -7,16 +7,22 @@ services:
     command: yarn build
 
   mf-navbar:
+    build:
+      context: https://github.com/hi-malay/mf-navbar.git
     environment:
       - NODE_ENV=production
     command: yarn build
 
   mf-employees:
+    build:
+      context: https://github.com/hi-malay/mf-employees.git
     environment:
       - NODE_ENV=production
     command: yarn build
 
   mf-employee-details:
+    build:
+      context: https://github.com/hi-malay/mf-employee-details.git
     environment:
       - NODE_ENV=production
     command: yarn build
