@@ -3,11 +3,11 @@ version: "3.9"
 services:
   mf-root-config:
     build:
-      context: .  # Current directory (mf-root-config)
+      context: .  # Local directory
     ports:
       - "9000:9000"
     volumes:
-      - .:/app  # Map mf-root-config to /app
+      - .:/app
       - /app/node_modules
     command: yarn start
     environment:
@@ -15,11 +15,11 @@ services:
 
   mf-navbar:
     build:
-      context: ../mf-navbar  # Path relative to mf-root-config
+      context: https://github.com/hi-malay/mf-navbar.git
     ports:
       - "9001:9001"
     volumes:
-      - ../mf-navbar:/app
+      - /app:/app
       - /app/node_modules
     command: yarn start
     environment:
@@ -27,24 +27,24 @@ services:
 
   mf-employees:
     build:
-      context: ../mf-employees  # Path relative to mf-root-config
+      context: https://github.com/hi-malay/mf-employees.git
     ports:
       - "9002:9002"
     volumes:
-      - ../mf-employees:/app
+      - /app:/app
       - /app/node_modules
     command: yarn start
     environment:
       - NODE_ENV=development
 
   mf-employee-details:
-      build:
-        context: ../mf-employee-details  # Path relative to mf-root-config
-      ports:
-        - "4200:4200"
-      volumes:
-        - ../mf-employee-details:/app
-        - /app/node_modules
-      command: yarn start
-      environment:
-        - NODE_ENV=development
+    build:
+      context: https://github.com/hi-malay/mf-employee-details.git
+    ports:
+      - "4200:4200"
+    volumes:
+      - /app:/app
+      - /app/node_modules
+    command: yarn start
+    environment:
+      - NODE_ENV=development
