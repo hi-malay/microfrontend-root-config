@@ -13,7 +13,8 @@ jobs:
 
     steps:
       # Checkout the code
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       # Set up Node.js
       - name: Set up Node.js
@@ -21,6 +22,12 @@ jobs:
         with:
           node-version: 18.x
           cache: "yarn"
+
+      # Install Docker and Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       # Install dependencies
       - name: Install dependencies
