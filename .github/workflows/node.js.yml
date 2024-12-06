@@ -1,46 +1,35 @@
-name: Deploy mf-root-config to GitHub Pages
+name: Node.js CI
 
 on:
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
-    steps:
-      # Checkout the code
-      - name: Checkout code
-        uses: actions/checkout@v4
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
 
-      # Set up Node.js
-      - name: Set up Node.js
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: ${{ matrix.node-version }}
           cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
 
-      # Install Docker and Docker Compose
-      - name: Install Docker Compose
+      - name: Deploy with gh-pages
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      # Install dependencies
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      # Build the application using the production Docker Compose file
-      - name: Build production artifacts
-        run: |
-          docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
-
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        run: |
+          yarn build
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
         env:
